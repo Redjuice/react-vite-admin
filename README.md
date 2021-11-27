@@ -295,3 +295,50 @@ yarn add stylelint stylelint-config-standard stylelint-order -D
 同时需要将 VSCode 的 stylelint 插件降级，现在插件的最新版本是 1.0.3，不支持
 stylelint 13 版本。点击插件旁边的小齿轮，再点 Install Another Version，选择其他
 版本进行安装。选 `0.87.6 ` 版本安装就可以了，这时 css 自动格式化功能恢复正常。
+
+### 配置 less
+
+Vite 也同时提供了对 .scss, .sass, .less, .styl 和 .stylus 文件的内置支持。没有必
+要为它们安装特定的 Vite 插件，但必须安装相应的预处理器依赖：
+
+```
+yarn add less -D
+```
+
+### 配置 antd
+
+```
+yarn add antd
+
+// 自动按需导入
+yarn add vite-plugin-style-import -D
+
+// 修改vite.config.js
+// vite.config.ts
+import styleImport from 'vite-plugin-style-import'
+
+export default {
+  plugins: [
+    ...,
+    // 配置 vite-plugin-style-import, 解决 AntDesign 按需加载
+    styleImport({
+      libs: [
+        {
+          libraryName: 'antd',
+          esModule: true,
+          resolveStyle: (name) => `antd/es/${name}/style`
+        }
+      ]
+    })
+  ],
+  css: {
+    // 指定传递给 CSS 预处理器的选项
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true // 支持内联JavaScript
+      }
+    }
+  }
+}
+``
+```
