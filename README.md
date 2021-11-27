@@ -342,3 +342,73 @@ export default {
 }
 ``
 ```
+
+### 配置 全局 configs 文件
+
+`详情见src/configs/**/*.js`
+
+### 配置 全局样式文件
+
+`详情见src/styles/**/*.less`
+
+#### styles + less 实现样式隔离
+
+```
+// 使用CSS属性选择器和less的嵌套语法来简单实现隔离
+// 组件
+function App() {
+  return (
+    <div className="container" data-component="app">
+      <div className="content">内容区域</div>
+    </div>
+  );
+}
+
+// less
+[data-component=app].container {
+  .content {
+    padding: 20px;
+  }
+}
+```
+
+### 配置 vite.config.js
+
+```
+具体查看vite.config.js
+```
+
+### 配置 jsconfig.json
+
+`解决配置别名后, 不提示路径的问题`
+
+```
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*.vue", "src/**/*.js", "vite.config.js"],
+  "exclude": ["node_modules", "dist"]
+}
+// jsconfig.json 文件来定义项目上下文时，表明该目录是 JavaScript 项目的根目录，可以配置属于项目的文件、要从项目中排除的文件以及编译器选项
+
+// Exclude 属性(glob 模式)告诉语言服务哪些文件不是源代码的一部分。 这使性能保持在一个高水平。 如果 IntelliSense 速度慢，则向排除列表添加文件夹
+
+// 您可以使用 include 属性(glob 模式)显式地设置项目中的文件。 如果没有 include 属性，则默认情况下包含包含目录和子目录中的所有文件。 如果指定了 include 属性，则只包含这些文件。
+
+// 如果您的工作区中没有 jsconfig.json，VS Code 将默认排除 node_modules 文件夹
+
+// 当你的 JavaScript 项目变得太大而且性能降低时，通常是因为类似node_modules的库文件夹。 如果 VS 代码检测到项目变得太大，它将提示您编辑exclude。
+```
+
+`jsconfig.json首行可能会报错, 设置工作区.vscode/settings.json`
+
+```
+{
+  ...,
+  "js/ts.implicitProjectConfig.checkJs": true // 启用或禁用javaScript文件的语义检查
+}
+```

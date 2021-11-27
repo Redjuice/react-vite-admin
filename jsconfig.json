@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*.jsx", "src/**/*.js", "vite.config.js"],
+  "exclude": ["node_modules", "dist"]
+}
