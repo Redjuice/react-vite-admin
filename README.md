@@ -10,16 +10,14 @@ yarn create vite
 
 #### 配置 eslint + prettier
 
-```
-# vsCode安装插件
+# vsCode 安装插件
+
 eslint + prettier
 
 # 安装依赖
-yarn add @babel/eslint-parser @babel/preset-react
-eslint eslint-config-prettier eslint-config-react
-eslint-plugin-prettier eslint-plugin-react
-prettier -D
 
+yarn add @babel/eslint-parser @babel/preset-react eslint eslint-config-prettier
+eslint-config-react eslint-plugin-prettier eslint-plugin-react prettier -D
 
 `新建.eslintrc.js`
 
@@ -57,4 +55,13 @@ prettier -D
   "prettier:fix": "prettier --write ./src/*.{less,js,jsx,json}",
   "format:all": "npm run eslint:fix && npm run prettier:fix",
 },
+```
+
+解决 `找不到模块“..”或其相应的类型声明。ts` 的错误
+
+`修改.vscode/settings.json`
+
+```
+...
+"javascript.validate.enable": false // 启用/禁用javascript验证
 ```
