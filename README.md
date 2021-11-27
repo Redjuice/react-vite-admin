@@ -65,3 +65,90 @@ eslint-config-react eslint-plugin-prettier eslint-plugin-react prettier -D
 ...
 "javascript.validate.enable": false // 启用/禁用javascript验证
 ```
+
+### 配置 husky + lint-staged
+
+`执行以下操作`
+
+```
+// && 连接符在vscode中会报错，建议在windows的powershell执行
+npx husky-init && npm install
+
+yarn add lint-staged -D
+```
+
+`修改package.json`
+
+```
+// package.json
+"scripts": {
+  ...,
+  "lint-staged": "lint-staged"
+},
+"lint-staged": {
+  "*.{js,vue}": [
+    "npm run format:all",
+    "git add ."
+  ]
+},
+```
+
+### 配置 commitlint
+
+`安装依赖`
+
+```
+yarn add @commitlint/cli @commitlint/config-conventional -D
+```
+
+`新建commitlint.config.js或.commitlintrc.js`
+
+```
+// 具体查看.commitlintrc.js
+```
+
+`新建.husky/commit-msg`
+
+```
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npx --no-install commitlint --edit $1
+```
+
+`或者修改.husky/pre-commit`
+
+```
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run lint-staged
+npx --no-install commitlint --edit $1
+```
+
+### 配置 commitizen
+
+```
+// 全局安装
+// 它会提供 git cz 命令替代我们的 git commit命令，帮助我们更加方便生成符合规范的 commit message。
+npm install -g commitizen
+
+// 项目中安装
+// commitizen 的首选适配器
+yarn add cz-conventional-changelog -D
+```
+
+`修改package.json`
+
+```
+// package.json
+"scripts": {
+  ...,
+  "commit": "git cz"
+},
+"config": {
+  "commitizen": {
+    "path": "node_modules/cz-conventional-changelog"
+  }
+}
+```
