@@ -242,3 +242,56 @@ yarn add git-cz -D
 ```
 
 `执行 yarn commit 或者 npx git-cz 提交代码`
+
+### 配置 stylelint
+
+[掘金: stylelint 代码自动格式化](https://juejin.cn/post/7022720509875847182#heading-0)
+
+- vscode 安装 eslint + prettier
+- 安装以下依赖
+
+```
+yarn add stylelint stylelint-config-standard stylelint-order -D
+```
+
+`新建.stylelintrc.js`
+
+```
+具体查看.stylelintrc.js
+```
+
+`修改package.json`
+
+```
+// package.json
+"scripts": {
+  ...,
+  "style:fix": "stylelint \"src/**/*.(vue|less|css)\" --fix",
+  "format:all": "npm run style:fix && npm run eslint:fix && npm run prettier:fix",
+},
+```
+
+`修改.vscode/settings.json`
+
+```
+// settings.json
+...,
+"editor.codeActionsOnSave": {
+  ...,
+  "source.fixAll.stylelint": true
+}
+```
+
+`可能出现的问题: Unknown word (CssSyntaxError) 错误`
+
+因为插件版本太高, 对于 vue3 模板文件的支持不是很好，不能正确识别 .vue 文件的 css
+代码。需要降级处理
+
+```
+"stylelint": "^13.13.1",
+"stylelint-config-standard": "^22.0.0",
+```
+
+同时需要将 VSCode 的 stylelint 插件降级，现在插件的最新版本是 1.0.3，不支持
+stylelint 13 版本。点击插件旁边的小齿轮，再点 Install Another Version，选择其他
+版本进行安装。选 `0.87.6 ` 版本安装就可以了，这时 css 自动格式化功能恢复正常。
