@@ -9,13 +9,13 @@ export default function LayoutEmpty({
     `../../assets/empty/empty-${emptyType}.png`
   ];
   return (
-    <div className="empty" data-component="empty">
+    <div className="layout-empty" data-component="layout-empty">
       {emptys.map((item, index) => {
         if (emptyType === item)
-          return <img className="img" key={index} src={img.default} />;
+          return <img className="layout-img" key={index} src={img.default} />;
         return null;
       })}
-      {children || <div className="text">{emptyText}</div>}
+      {children || <div className="layout-text">{emptyText}</div>}
     </div>
   );
 }
