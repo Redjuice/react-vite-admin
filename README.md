@@ -351,7 +351,7 @@ export default {
 
 `详情见src/styles/**/*.less`
 
-#### styles + less 实现样式隔离
+#### 属性选择器 + less 实现样式隔离
 
 ```
 // 使用CSS属性选择器和less的嵌套语法来简单实现隔离
@@ -412,3 +412,38 @@ function App() {
   "js/ts.implicitProjectConfig.checkJs": true // 启用或禁用javaScript文件的语义检查
 }
 ```
+
+### 配置 在 VS Code 中调试
+
+[在 VS Code 中调试](https://v3.cn.vuejs.org/cookbook/debugging-in-vscode.html)
+
+`新建.vscode/launch.json`
+
+```
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "vuejs: chrome",
+      "url": "http://localhost:9527",
+      "webRoot": "${workspaceFolder}/src",
+      "breakOnLoad": true,
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*"
+      }
+    }
+  ]
+}
+```
+
+### 配置 环境变量
+
+[Vite: 环境变量和模式](https://cn.vitejs.dev/guide/env-and-mode.html)
+
+`新建.env.[mode]文件`
+
+- .env.[mode] # 只在指定模式下加载
+- 为了防止意外地将一些环境变量泄漏到客户端，只有以 VITE\_ 为前缀的变量才会暴露给
+  经过 vite 处理的代码

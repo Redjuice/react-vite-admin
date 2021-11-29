@@ -32,6 +32,7 @@ module.exports = {
   },
   // 在这里添加需要覆盖的规则
   rules: {
-    'react/react-in-jsx-scope': 0
+    'react/react-in-jsx-scope': 0,
+    'react/prop-types': 0
   }
 };
