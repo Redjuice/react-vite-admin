@@ -1,0 +1,42 @@
+[data-component='layout-form'].layout-form {
+  .title {
+    padding-bottom: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #33363c;
+
+    .anticon {
+      vertical-align: middle;
+      font-size: 14px;
+    }
+
+    .back {
+      display: inline-flex;
+      cursor: pointer;
+      font-size: 14px;
+
+      &::after {
+        margin: 0 10px;
+        width: 1.5px;
+        height: 20px;
+        background: #b8c3d1;
+        content: '';
+      }
+    }
+  }
+
+  .container {
+    position: relative;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
+
+    .footer {
+      padding-top: 20px;
+
+      .ant-btn {
+        margin-right: 12px;
+      }
+    }
+  }
+}

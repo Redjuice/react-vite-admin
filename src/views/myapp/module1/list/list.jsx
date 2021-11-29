@@ -1,6 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import LayoutList from '@/Layout/LayoutList';
-import { Form, Input, Button, Tabs, Table, Space } from 'antd';
+import {
+  Form,
+  Input,
+  Button,
+  Tabs,
+  Table,
+  Space
+  //  Pagination
+} from 'antd';
 
 const { Item } = Form;
 const { TabPane } = Tabs;
@@ -29,21 +37,21 @@ const { Column } = Table;
 // ];
 
 const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32
-  }
+  // {
+  //   key: '1',
+  //   name: 'John Brown',
+  //   age: 32
+  // },
+  // {
+  //   key: '2',
+  //   name: 'Jim Green',
+  //   age: 42
+  // },
+  // {
+  //   key: '3',
+  //   name: 'Joe Black',
+  //   age: 32
+  // }
 ];
 
 const pagination = {
@@ -104,6 +112,9 @@ export default class Modules2 extends Component {
             }}
           /> */}
         </Fragment>
+        {/* <Fragment key="paging">
+          <Pagination size="small" total={50} showSizeChanger showQuickJumper />
+        </Fragment> */}
       </LayoutList>
     );
   }

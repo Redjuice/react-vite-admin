@@ -1,9 +1,24 @@
 import React, { Component, Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
 import { LeftOutlined } from '@ant-design/icons';
+import { ConfigProvider } from 'antd';
+import LayoutEmpty from '@/Layout/LayoutEmpty';
 import './index.less';
 
-export default class LayoutList extends Component {
-  goBack = () => {};
+class LayoutList extends Component {
+  // 返回
+  goBack = () => {
+    const { history } = this.props;
+    history.goBack();
+  };
+
+  // 判断分页插槽
+  isPaging = () => {
+    const { children } = this.props;
+    return (
+      Array.isArray(children) && children.find((item) => item.key === 'paging')
+    );
+  };
 
   render() {
     const { back, title, children } = this.props;
@@ -20,24 +35,33 @@ export default class LayoutList extends Component {
           )}
           {!!title && <span>{title}</span>}
           <div className="header-btns fr">
-            {children.filter((item) => item.key === 'header')}
+            {Array.isArray(children) &&
+              children.filter((item) => item.key === 'header')}
           </div>
         </div>
         <div className="container">
           <div className="search">
-            {children.filter((item) => item.key === 'search')}
+            {Array.isArray(children) &&
+              children.filter((item) => item.key === 'search')}
           </div>
           <div className="tabs">
-            {children.filter((item) => item.key === 'tabs')}
+            {Array.isArray(children) &&
+              children.filter((item) => item.key === 'tabs')}
           </div>
           <div className="content">
-            {children.filter((item) => item.key === 'content')}
+            <ConfigProvider renderEmpty={LayoutEmpty}>
+              {Array.isArray(children) &&
+                children.filter((item) => item.key === 'content')}
+            </ConfigProvider>
           </div>
-          <div className="paging">
-            {children.filter((item) => item.key === 'paging')}
+          <div className={this.isPaging() ? 'paging' : ''}>
+            {Array.isArray(children) &&
+              children.filter((item) => item.key === 'paging')}
           </div>
         </div>
       </div>
     );
   }
 }
+
+export default withRouter(LayoutList);

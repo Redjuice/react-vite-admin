@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import List from '@/views/myapp/module1/module2/module2';
+import List from '@/views/myapp/module1/list/list';
+// import Form from '@/views/myapp/module1/form/form';
 
 import './index.less';
 export default class MyContent extends Component {
