@@ -1,0 +1,44 @@
+<template lang="pug">
+layout-form(:has_back="true")
+  {{!--
+  <!-- container-top slot --> --}}
+  {{!-- template(#container-top) --}}
+  {{!--
+  <!-- default slot --> --}}
+  template(#container)
+    div xxxxxxxxxx
+  {{!--
+  <!-- footer slot --> --}}
+  template(#footer)
+    el-button(size="small" type="primary" @click="saveData") 保存
+    el-button(size="small" @click="goBack") 返回
+</template>
+
+{{#if script}}
+<script>
+import { reactive, toRefs } from 'vue';
+import { useRouter } from 'vue-router';
+import LayoutForm from '@/components/layout/LayoutForm.vue';
+let $router = null;
+const goBack = () => $router.go(-1);
+// 保存数据
+const saveData = () => { }
+export default {
+  name: '{{ properCase ename }}',
+  components: { LayoutForm },
+  setup() {
+    $router = useRouter();
+    let detail = reactive({});
+    return {
+      detail,
+      goBack,
+      saveData
+    }
+  }
+}
+</script>
+{{/if}}
+
+{{#if style}}
+<style lang="less" scoped></style>
+{{/if}}
