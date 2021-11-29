@@ -447,3 +447,29 @@ function App() {
 - .env.[mode] # 只在指定模式下加载
 - 为了防止意外地将一些环境变量泄漏到客户端，只有以 VITE\_ 为前缀的变量才会暴露给
   经过 vite 处理的代码
+
+### 配置 Redux
+
+```
+具体查看src/redux
+```
+
+### 配置 axios
+
+`安装`
+
+```
+yarn add axios
+```
+
+`新建utils/https.js文件夹`
+
+```
+// 具体查看utils/https.js
+```
+
+`使用`
+
+```
+// 具体查看aips/*.js
+```
