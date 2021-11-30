@@ -62,6 +62,15 @@ const pagination = {
 };
 
 export default class Modules2 extends Component {
+  onChange = (data) => {
+    console.log(data);
+    this.fetchList();
+  };
+
+  fetchList = () => {
+    console.log('获取列表数据');
+  };
+
   render() {
     return (
       <LayoutList title="列表" back>
@@ -88,7 +97,11 @@ export default class Modules2 extends Component {
           </Tabs>
         </Fragment>
         <Fragment key="content">
-          <Table dataSource={data} pagination={pagination}>
+          <Table
+            dataSource={data}
+            pagination={pagination}
+            onChange={this.onChange}
+          >
             <Column title="Name" dataIndex="name" key="name" />
             <Column title="Age" dataIndex="age" key="age" />
             <Column

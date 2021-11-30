@@ -474,6 +474,12 @@ yarn add axios
 // 具体查看aips/*.js
 ```
 
+### Layout 页面
+
+```
+详情见src/layout
+```
+
 ### 配置 plop
 
 plop 是一个微型生成器框架，用于生成符合团队规范的模板文件。
