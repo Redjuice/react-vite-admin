@@ -40,7 +40,26 @@ const setting = {
   // 上传视频限制大小(MB)
   videoSize: 100,
   // 表格显示条数
-  pageSize: 20
+  pageSize: 20,
+
+  // ---------------
+  requestTimeout: 10000, // 请求超时时间 单位毫秒
+  contentType: 'application/json;charset=UTF-8', // 或application/x-www-form-urlencoded;charset=UTF-8
+  pageEnable: false, // 页面路由权限开关
+  pagePower: () => {
+    return [];
+  }, // 权限数据源
+  elementEnable: false, // 页面元素权限开关
+  elementPower: () => {
+    // 以第一级菜单key为对象的数组
+    return {};
+  }, // 按钮元素的权限组
+  allRouter: () => {
+    return JSON.parse(sessionStorage.getItem('router')) || [];
+  }, // 所有路由的数据源
+  isLogin: () => {
+    return true;
+  } // 判断登录的条件
 };
 
 export default setting;
