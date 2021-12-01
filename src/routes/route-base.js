@@ -1,13 +1,17 @@
+import Login from '@/views/base/Login';
+import NotFound from '@/views/base/404';
 const baseRoutes = [
   {
     title: '登录',
-    path: '/login',
-    icon: 'HomeOutlined'
+    path: '/',
+    exact: true,
+    component: Login
   },
   {
     title: '404',
     path: '/404',
-    icon: 'HomeOutlined'
+    exact: true,
+    component: NotFound
   }
 ];
 
