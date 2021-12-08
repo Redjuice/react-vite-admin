@@ -1,12 +1,14 @@
 const baseRoutes = [
   {
     title: '登录',
-    path: '/login',
+    path: '/',
+    exact: true,
     icon: 'HomeOutlined'
   },
   {
     title: '404',
     path: '/404',
+    exact: true,
     icon: 'HomeOutlined'
   }
 ];

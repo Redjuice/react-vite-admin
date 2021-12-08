@@ -10,9 +10,9 @@ function App() {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route path="/login" component={Login}></Route>
+          <Route exact path="/" component={Login}></Route>
           <Route path="/404" component={NotFound}></Route>
-          <Route path="/" component={Layout} />
+          <Route path="/app" component={Layout} />
         </Switch>
       </Router>
     </Provider>
