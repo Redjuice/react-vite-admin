@@ -5,7 +5,7 @@
     "start": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "commit": "git-cz",
+    "commit": "git add . && git-cz",
     "eslint:fix": "eslint --fix --ext .js,.jsx src",
     "prettier:fix": "prettier --write ./src/../*.{less,js,jsx,json}",
     "style:fix": "stylelint \"src/**/*.(less|css)\" --fix",

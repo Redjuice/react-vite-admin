@@ -44,11 +44,6 @@ module.exports = {
           name: '#tabs',
           value: 'tabs',
           checked: true
-        },
-        {
-          name: '#paging',
-          value: 'paging',
-          checked: true
         }
       ],
       when: data => {
@@ -66,16 +61,6 @@ module.exports = {
           checked: true
         },
         {
-          name: '#select',
-          value: 'select',
-          checked: true
-        },
-        {
-          name: '#upload',
-          value: 'upload',
-          checked: true
-        },
-        {
           name: '#footer',
           value: 'footer',
           checked: true
@@ -84,23 +69,6 @@ module.exports = {
       when: data => {
         return data.temp === 'form'
       }
-    },
-    {
-      type: 'checkbox',
-      name: 'blocks',
-      message: '请选择标签',
-      choices: [
-        {
-          name: '<script>',
-          value: 'script',
-          checked: true
-        },
-        {
-          name: '<style>',
-          value: 'style',
-          checked: true
-        }
-      ]
     }
   ],
   actions: data => {
@@ -108,34 +76,28 @@ module.exports = {
     data.ename = data.ename.split('/').splice(-1)[0]
     data.template = true
     data.hide = false
-    data.blocks.forEach(item => {
-      data[item] = true
-    })
     data.listBlock &&
       data.listBlock.forEach(item => {
+        if (item === 'header' || item === 'search') data.headerOrSearch = true
         data[item] = true
       })
     data.formBlock &&
       data.formBlock.forEach(item => {
         data[item] = true
       })
-    console.log(data)
-    // const pname = '{{ pathCase path }}';
-    // const ename = '{{ lowerCase ename}}';
     const pname = '{{ path }}'
     const ename = '{{ ename}}'
     const temp = '{{ lowerCase temp}}'
-    console.log(pname, ename, temp)
     const actions = [
       {
         type: 'add',
-        path: `src/views/myapp/${pname}/${ename}.vue`,
+        path: `src/views/myapp/${pname}/${ename}.jsx`,
         templateFile: `plop-templates/view/index.${temp}.hbs`,
         data: data
       },
       {
         type: 'add',
-        path: `src/views/myapp/${pname}/${ename}.js`,
+        path: `src/views/myapp/${pname}/index.js`,
         templateFile: 'plop-templates/view/index.js.hbs',
         data: data
       }

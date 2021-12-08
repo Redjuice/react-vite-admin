@@ -1,11 +1,5 @@
-{{#if script}}
-<script setup></script>
-{{/if}}
+import RouterView from '@/components/private/routerView';
 
-<template>
-  <router-view></router-view>
-</template>
-
-{{#if style}}
-<style lang="less" scoped></style>
-{{/if}}
+export default function {{properCase ename}}(props) {
+  return <RouterView route={props.route}></RouterView>;
+}
