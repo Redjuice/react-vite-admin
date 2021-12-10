@@ -1,5 +1,5 @@
-import baseRoute from './route-base';
 import collectRoute from './route-collect';
+import baseRoute from './route-base';
 
 const allRoutes = [...baseRoute, ...collectRoute];
 
