@@ -91,13 +91,13 @@ module.exports = {
     const actions = [
       {
         type: 'add',
-        path: `src/views/myapp/${pname}/${ename}.jsx`,
+        path: `src/views/app/${pname}/${ename}.jsx`,
         templateFile: `plop-templates/view/index.${temp}.hbs`,
         data: data
       },
       {
         type: 'add',
-        path: `src/views/myapp/${pname}/index.js`,
+        path: `src/views/app/${pname}/index.js`,
         templateFile: 'plop-templates/view/index.js.hbs',
         data: data
       }

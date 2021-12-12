@@ -47,3 +47,13 @@ export const deleteUserApi = (data) => {
     data
   });
 };
+
+export const getSelectData = (data) => {
+  return http(
+    'https://mock.mengxuegu.com/mock/61a86f43c6b34465f53dbb75/api/api/select-data',
+    {
+      method: 'POST',
+      data
+    }
+  );
+};

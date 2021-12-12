@@ -2,7 +2,7 @@ module.exports = {
   extends: ['stylelint-config-standard'],
   plugins: ['stylelint-order'],
   // 设定需要忽略的文件
-  ignoreFiles: ['dist/**/*'],
+  ignoreFiles: ['dist/**/*', 'src/styles/mixins.less'],
   rules: {
     // 颜色指定小写
     'color-hex-case': 'lower',

@@ -1,10 +1,24 @@
 // 这里提供了一些公共的mixins函数
 
-// px2vw
+// px2vw - mixin
 @base-width: 1920;
-
 .vw(@attr, @px) {
   @vw: (@px / @base-width) * 100;
-
   @{attr}: ~'@{vw}vw';
 }
+
+// px2vw - functions
+.vwFun() {
+  @functions: ~`(function() {
+    var clientWidth = '1920';
+    function convert(size) {
+      return typeof size === 'string' ? 
+        +size.replace('px', '') : size;
+    }
+    this.vw = function(size) {
+      return convert(size) / clientWidth * 100 + 'vw';
+    }
+  })()`;
+}
+  
+.vwFun();

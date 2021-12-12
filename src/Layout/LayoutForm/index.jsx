@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import { LeftOutlined } from '@ant-design/icons';
+import { typeIs } from '@/utils/tools';
 import './index.less';
 
 class LayoutForm extends Component {
@@ -8,6 +9,19 @@ class LayoutForm extends Component {
   goBack = () => {
     const { history } = this.props;
     history.goBack();
+  };
+
+  /**
+   * @description 渲染子节点
+   * @author WangHeng
+   * @param {string} category 节点名称
+   * @return {node} 返回的子节点
+   */
+  renderChildren = (children, category) => {
+    if (typeIs(children) === 'object' && children.key === category)
+      return children;
+    if (typeIs(children) === 'array')
+      return children.filter((item) => item.key === category);
   };
 
   render() {
@@ -27,12 +41,10 @@ class LayoutForm extends Component {
         </div>
         <div className="container">
           <div className="content">
-            {Array.isArray(children) &&
-              children.filter((item) => item.key === 'content')}
+            {this.renderChildren(children, 'content')}
           </div>
           <div className="footer">
-            {Array.isArray(children) &&
-              children.filter((item) => item.key === 'footer')}
+            {this.renderChildren(children, 'footer')}
           </div>
         </div>
       </div>

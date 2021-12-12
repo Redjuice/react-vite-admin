@@ -4,17 +4,12 @@ export default function LayoutEmpty({
   emptyType = 'list',
   children
 }) {
-  const emptys = ['list', '404'];
-  const img = import.meta.globEager('../../assets/empty/*')[
-    `../../assets/empty/empty-${emptyType}.png`
-  ];
   return (
     <div className="layout-empty" data-component="layout-empty">
-      {emptys.map((item, index) => {
-        if (emptyType === item)
-          return <img className="layout-img" key={index} src={img.default} />;
-        return null;
-      })}
+      <img
+        className="layout-img"
+        src={`/src/assets/empty/empty-${emptyType}.png`}
+      />
       {children || <div className="layout-text">{emptyText}</div>}
     </div>
   );

@@ -8,13 +8,11 @@ const getBaseUrL = () => {
     typeof window != 'undefined' &&
     window.location.hostname === 'localhost'
   ) {
-    api = `${import.meta.env.VITE_APP_AXIOS_BASE_URL}`;
+    api = `${import.meta.env.VITE_APP_API_VERSION}`;
   } else {
     api =
       import.meta.env &&
-      `${import.meta.env.VITE_API_ROOT}${
-        import.meta.env.VITE_APP_AXIOS_BASE_URL
-      }`;
+      `${import.meta.env.VITE_API_ROOT}${import.meta.env.VITE_APP_API_VERSION}`;
   }
   return api;
 };

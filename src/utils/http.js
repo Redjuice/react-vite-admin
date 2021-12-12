@@ -7,6 +7,7 @@ import 'nprogress/nprogress.css';
 import configs from '@/configs';
 
 const { baseURL, timeout, withCredentials, contentType } = configs;
+
 // axios配置
 let config = {
   baseURL,
@@ -43,17 +44,30 @@ _axios.interceptors.request.use(
 // 响应拦截器
 _axios.interceptors.response.use(
   (response) => {
-    // 进度条结束
-    NProgress.done();
-    // 请求成功
-    return response.data;
+    const {
+      status,
+      data: { code, msg }
+    } = response;
+    if (status === 200) {
+      if (code === 0) {
+        // 进度条结束
+        NProgress.done();
+        // 请求成功
+        return response.data.data;
+      } else {
+        // 进度条结束
+        NProgress.done();
+        // 提示消息
+        message.error(msg);
+      }
+    }
   },
   (error) => {
     // 进度条结束
     NProgress.done();
     if (error.response.status === 401) {
-      const { status, msg } = error.response.data;
-      if (status === 1) {
+      const { code, msg } = error.response.data;
+      if (code === 888888) {
         // 提示消息
         message.error(`${msg}，请重新登录`);
         // 分发删除用户信息的action

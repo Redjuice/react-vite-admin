@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom';
-import { selectMenuKey } from '@/utils/private/router';
+import { selectMenuKey } from '@/routes/utils/router';
 import './index.less';
 
 export default function notAuth() {

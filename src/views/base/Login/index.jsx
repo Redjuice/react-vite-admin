@@ -6,7 +6,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import config from '@/configs';
 import { loginApi } from '@/apis';
 import { saveUserAndToken } from '@/redux/actions/login';
-// import { selectMenuKey } from '@/utils/private/router';
+// import { selectMenuKey } from '@/routes/utils/router';
 import './index.less';
 
 class Login extends Component {
@@ -26,7 +26,7 @@ class Login extends Component {
     const { user, token } = res;
     this.props.saveUserAndToken({ user, token }); // 保存数据到redux
     message.info('登录成功');
-    this.props.history.replace('/myapp/home');
+    this.props.history.replace('/app/home');
   };
 
   validator = (_, value) => {

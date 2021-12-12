@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { LeftOutlined } from '@ant-design/icons';
 import { ConfigProvider } from 'antd';
 import LayoutEmpty from '@/Layout/LayoutEmpty';
+import { typeIs } from '@/utils/tools';
 import './index.less';
 
 class LayoutList extends Component {
@@ -20,6 +21,19 @@ class LayoutList extends Component {
     );
   };
 
+  /**
+   * @description 渲染子节点
+   * @author WangHeng
+   * @param {string} category 节点名称
+   * @return {node} 返回的子节点
+   */
+  renderChildren = (children, category) => {
+    if (typeIs(children) === 'object' && children.key === category)
+      return children;
+    if (typeIs(children) === 'array')
+      return children.filter((item) => item.key === category);
+  };
+
   render() {
     const { back, title, children } = this.props;
     return (
@@ -35,28 +49,18 @@ class LayoutList extends Component {
           )}
           {!!title && <span>{title}</span>}
           <div className="header-btns fr">
-            {Array.isArray(children) &&
-              children.filter((item) => item.key === 'header')}
+            {this.renderChildren(children, 'header')}
           </div>
         </div>
         <div className="container">
           <div className="search">
-            {Array.isArray(children) &&
-              children.filter((item) => item.key === 'search')}
+            {this.renderChildren(children, 'search')}
           </div>
-          <div className="tabs">
-            {Array.isArray(children) &&
-              children.filter((item) => item.key === 'tabs')}
-          </div>
+          <div className="tabs">{this.renderChildren(children, 'tabs')}</div>
           <div className="content">
             <ConfigProvider renderEmpty={LayoutEmpty}>
-              {Array.isArray(children) &&
-                children.filter((item) => item.key === 'content')}
+              {this.renderChildren(children, 'content')}
             </ConfigProvider>
-          </div>
-          <div className={this.isPaging() ? 'paging' : ''}>
-            {Array.isArray(children) &&
-              children.filter((item) => item.key === 'paging')}
           </div>
         </div>
       </div>
