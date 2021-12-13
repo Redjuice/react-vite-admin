@@ -5,7 +5,9 @@
 // 引入combineReducers，用于汇总多个reducer
 import { combineReducers } from 'redux';
 import login from './login';
+import menu from './menu';
 
 export default combineReducers({
+  menu,
   login
 });

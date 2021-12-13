@@ -1,6 +1,8 @@
 import AsyncComponent from './components/AsyncComponent';
 import config from '../views/app';
 const files = import.meta.glob(`../views/**/*.jsx`);
+import store from '@/redux/store';
+import { SAVE_MENU } from '@/redux/constant';
 
 // 配置路由
 let configRouter = [];
@@ -79,5 +81,5 @@ const addRouter = (arr, router, parentUrl) => {
 };
 
 addRouter(configRouter, [config], '');
-sessionStorage.setItem('router', JSON.stringify(configRouter));
+store.dispatch({ type: SAVE_MENU, data: configRouter });
 export default configRouter;

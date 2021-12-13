@@ -1,9 +1,10 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
-import store from '@/redux/store';
 import allRoutes from './routes';
-console.log(allRoutes);
+import store from '@/redux/store';
+import '@/utils/suppressWarn';
+import 'antd/dist/antd.less';
 
 function App() {
   return (

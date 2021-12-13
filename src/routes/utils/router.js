@@ -1,7 +1,6 @@
-// 路由的数据源
-import configs from '@/configs';
 import { matchRoutes } from 'react-router-config';
-const allRouter = configs.allRouter();
+import store from '@/redux/store';
+const allRouter = store.getState().menu;
 // 获取属于菜单的路由
 const getMenu = (arrMenu) => {
   return arrMenu.filter((item) => {

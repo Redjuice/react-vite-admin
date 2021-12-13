@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
-import styleImport from 'vite-plugin-style-import';
+// import styleImport from 'vite-plugin-style-import';
 import { resolve } from 'path';
 import configs from './src/configs';
 
@@ -12,17 +12,17 @@ export default ({ mode }) => {
   const { VITE_APP_API_ROOT } = process.env;
   return defineConfig({
     plugins: [
-      react(),
+      react()
       // 配置 vite-plugin-style-import, 解决 AntDesign 按需加载
-      styleImport({
-        libs: [
-          {
-            libraryName: 'antd',
-            esModule: true,
-            resolveStyle: (name) => `antd/es/${name}/style`
-          }
-        ]
-      })
+      // styleImport({
+      //   libs: [
+      //     {
+      //       libraryName: 'antd',
+      //       esModule: true,
+      //       resolveStyle: (name) => `antd/es/${name}/style`
+      //     }
+      //   ]
+      // })
     ],
     css: {
       // 指定传递给 CSS 预处理器的选项
