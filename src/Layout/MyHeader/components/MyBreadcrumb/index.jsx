@@ -3,6 +3,7 @@ import { Breadcrumb } from 'antd';
 import routes from '@/routes/route-collect';
 import './index.less';
 const allRoutes = [];
+
 const flattenRoutes = (routes) => {
   routes.forEach((item) => {
     allRoutes.push(item);
@@ -23,11 +24,7 @@ const _differenceBy = (array) => {
 };
 
 // 面包屑组件
-export default class ComBreadcrumb extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+export default class MyBreadcrumb extends Component {
   getMenuNames = (routes) => {
     const { location } = this.props;
     let matchMenus = [];
@@ -44,7 +41,7 @@ export default class ComBreadcrumb extends Component {
     return (
       <Breadcrumb separator="/">
         {menus.map((item, index) => {
-          return <Breadcrumb.Item key={index}>{item.menuName}</Breadcrumb.Item>;
+          return <Breadcrumb.Item key={index}>{item.name}</Breadcrumb.Item>;
         })}
       </Breadcrumb>
     );

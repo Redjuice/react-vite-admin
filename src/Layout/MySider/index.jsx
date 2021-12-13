@@ -25,7 +25,7 @@ const menuItem = (routes) => {
         <SubMenu
           key={item.key}
           icon={item.icon ? renderIcon(item.icon) : ''}
-          title={item.menuName}
+          title={item.name}
         >
           {menuItem(item.routes)}
         </SubMenu>
@@ -33,7 +33,7 @@ const menuItem = (routes) => {
     } else {
       return (
         <Menu.Item icon={item.icon ? renderIcon(item.icon) : ''} key={item.key}>
-          {item.menuName}
+          {item.name}
         </Menu.Item>
       );
     }

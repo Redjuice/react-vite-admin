@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button, Modal } from 'antd';
-import ComBreadcrumb from '../ComBreadcrumb';
+import MyBreadcrumb from './components/MyBreadcrumb';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -40,7 +40,7 @@ class MyHearder extends Component {
           <div className="icon m-r-15" onClick={this.toggleCollapsed}>
             {!collapsed ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
           </div>
-          <ComBreadcrumb location={location}></ComBreadcrumb>
+          <MyBreadcrumb location={location} />
         </div>
         <div className="right">
           <span className="text">欢迎，{this.props.user.username}</span>

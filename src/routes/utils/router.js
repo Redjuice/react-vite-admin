@@ -7,7 +7,7 @@ const getMenu = (arrMenu) => {
     if (item.routes && item.routes.length) {
       item.routes = getMenu(item.routes);
     }
-    return item.menuShow === true;
+    return item.show === true;
   });
 };
 // 获取默认路由key
