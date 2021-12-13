@@ -1,14 +1,18 @@
 .ant-layout {
-  overflow-x: hidden;
+  overflow: hidden;
   height: 100vh;
 }
 
 .ant-layout-header {
+  position: fixed;
+  top: 0;
   padding: 0;
+  width: calc(100vw - 200px);
 }
 
 .ant-layout-content {
-  margin: 12px;
+  overflow-y: auto;
+  margin: 76px 12px 12px;
   min-height: auto;
   background: #ffffff;
 }
